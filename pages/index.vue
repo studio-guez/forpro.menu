@@ -7,44 +7,48 @@
                 <AppHeader/>
             </div>
             <div class="v-index__menu__text">
-                <AppTextContent
-                    day="Lundi"
-                    cuisine_du_monde="Curry vert de poulet, riz Basmati"
-                    fourchette_verte="Fusilli"
-                    burger="CheeseBurger"
-                    street_food="croque monsieur"
-                />
-                <AppTextContent
-                    day="Mardi"
-                    cuisine_du_monde="Curry vert de poulet, riz Basmati"
-                    fourchette_verte="Fusilli"
-                    burger="CheeseBurger"
-                    street_food="croque monsieur"
-                />
-                <AppTextContent
-                    day="Mercredi"
-                    cuisine_du_monde="Curry vert de poulet, riz Basmati"
-                    fourchette_verte="Fusilli"
-                    burger="CheeseBurger"
-                    street_food="croque monsieur"
-                />
-                <AppTextContent
-                    day="Jeudi"
-                    cuisine_du_monde="Curry vert de poulet, riz Basmati"
-                    fourchette_verte="Fusilli"
-                    burger="CheeseBurger"
-                    street_food="croque monsieur"
-                />
-                <AppTextContent
-                    day="Vendredi"
-                    cuisine_du_monde="Curry vert de poulet, riz Basmati"
-                    fourchette_verte="Fusilli"
-                    burger="CheeseBurger"
-                    street_food="croque monsieur"
-                />
+
+                <AppTextContentFoodLab color="#37007d">
+                  Poulet Satay
+                  <br>Riz frit
+                  <br>Chou chinois mariné
+                  <br>&nbsp;
+                </AppTextContentFoodLab>
+
+
+                <AppTextContentFoodLab color="#37007d">
+                  Gigot d’agneau du Valais et jus au thym
+                  <br>Gratin dauphinois
+                  <br>Carotte confite à la mandarine
+                  <br>&nbsp;
+                </AppTextContentFoodLab>
+
+
+                <AppTextContentFoodLab color="#37007d">
+                  Moules marinières
+                  <br>Pommes frites
+                  <br>&nbsp;
+                  <br>&nbsp;
+                </AppTextContentFoodLab>
+
+
+                <AppTextContentFoodLab color="#37007d">
+                  Mole de bœuf
+                  <br>Mousseline de patate douce
+                  <br>Maïs et courge rôtie
+                  <br>&nbsp;
+                </AppTextContentFoodLab>
+
+
+                <AppTextContentFoodLab color="#37007d">
+                  Pavé de saumon à l’oseille
+                  <br>Riz safrané
+                  <br>Mousseline de céleri
+                  <br>&nbsp;
+                </AppTextContentFoodLab>
             </div>
             <div class="v-index__menu__bg">
-                <AppSvgFoodCourt/>
+                <AppSvgFoodLab/>
             </div>
         </div>
     </section>
@@ -57,6 +61,8 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import AppTextContent from "~/components/AppTextContent.vue";
+import AppSvgFoodLab from "~/components/AppSvgFoodLab.vue";
+import AppTextContentFoodLab from "~/components/AppTextContentFoodLab.vue";
 
 const props = defineProps<{
     message?: string
@@ -88,9 +94,9 @@ const props = defineProps<{
 
 .v-index__menu__text {
     position: absolute;
-    top: 11.075cm;
+    top: 10.175cm;
     left: 7.65cm;
-    height: 153.4mm;
+    height: 141.1mm;
     width: 12cm;
     display: flex;
     flex-direction: column;

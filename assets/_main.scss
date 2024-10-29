@@ -74,3 +74,8 @@ a {
     print-color-adjust: exact; /* Pour les autres navigateurs */
   }
 }
+
+@media screen {
+  * {
+  }
+}
