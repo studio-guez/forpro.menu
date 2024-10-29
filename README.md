@@ -2,6 +2,13 @@
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
+
+## links
+
+https://nextcloud.for-pro.ch/s/nzwDkxkppBQQXiQ/download/Menu_FoodCourt.xlsx
+https://nextcloud.for-pro.ch/s/eG6z2nARQ8JnGqy/download/Menu_FoodLab.xlsx
+
+
 ## Setup
 
 Make sure to install the dependencies:
