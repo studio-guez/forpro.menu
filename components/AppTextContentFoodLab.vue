@@ -38,5 +38,7 @@ const props = defineProps<{
     font-size: 12pt;
     line-height: 15pt;
     font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
 }
 </style>

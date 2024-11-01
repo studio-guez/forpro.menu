@@ -9,41 +9,41 @@
             <div class="v-index__menu__text">
 
                 <AppTextContentFoodLab color="#37007d">
-                  Poulet Satay
-                  <br>Riz frit
-                  <br>Chou chinois mariné
-                  <br>&nbsp;
-                </AppTextContentFoodLab>
-
-
-                <AppTextContentFoodLab color="#37007d">
-                  Gigot d’agneau du Valais et jus au thym
-                  <br>Gratin dauphinois
-                  <br>Carotte confite à la mandarine
-                  <br>&nbsp;
-                </AppTextContentFoodLab>
-
-
-                <AppTextContentFoodLab color="#37007d">
-                  Moules marinières
+                  Carbonnade flamande
                   <br>Pommes frites
-                  <br>&nbsp;
-                  <br>&nbsp;
-                </AppTextContentFoodLab>
-
-
-                <AppTextContentFoodLab color="#37007d">
-                  Mole de bœuf
-                  <br>Mousseline de patate douce
-                  <br>Maïs et courge rôtie
+                  <br>Carottes jaune confites
                   <br>&nbsp;
                 </AppTextContentFoodLab>
 
 
                 <AppTextContentFoodLab color="#37007d">
-                  Pavé de saumon à l’oseille
-                  <br>Riz safrané
-                  <br>Mousseline de céleri
+                  Rôti de porc, sauce aux champignons
+                  <br>Polenta gratinée
+                  <br>Mousseline de courges
+                  <br>&nbsp;
+                </AppTextContentFoodLab>
+
+
+                <AppTextContentFoodLab color="#37007d">
+                  Cuisse de canette laquée
+                  <br>Nouilles Udon
+                  <br>Pack Choi
+                  <br>&nbsp;
+                </AppTextContentFoodLab>
+
+
+                <AppTextContentFoodLab color="#37007d">
+                  Cordonbleu au Gruyère AOP
+                  <br>Pommes rissolées
+                  <br>Cote de blette
+                  <br>&nbsp;
+                </AppTextContentFoodLab>
+
+
+                <AppTextContentFoodLab color="#37007d">
+                  Filet de merlu, vierge à la pomme.
+                  <br>Fregola Sarda à la tomate séchée
+                  <br>Chou kale sauté
                   <br>&nbsp;
                 </AppTextContentFoodLab>
             </div>

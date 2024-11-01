@@ -9,42 +9,42 @@
             <div class="v-food-court__menu__text">
                 <AppTextContent
                     day="Lundi"
-                    cuisine_du_monde="Nouilles sautées au bœuf"
-                    fourchette_verte="Soupe campagnarde"
+                    cuisine_du_monde="Curry panang"
+                    fourchette_verte="Lasagne au bœuf, bouquet de salades"
                     burger="Cheeseburger"
-                    street_food="Tenders de poulet Kentucky"
+                    street_food="Baguette Merguez"
                     color="black"
                 />
                 <AppTextContent
                     day="Mardi"
-                    cuisine_du_monde="Piadine au jambon cru, burrata et crème de balsamique"
-                    fourchette_verte="Gnocchi à la marinara"
-                    burger="Pulled chicken burger"
-                    street_food="Chili dog carne"
+                    cuisine_du_monde="Bobun au bœuf"
+                    fourchette_verte="Panini à la mozzarella et pesto rosso, salade mêlées"
+                    burger="Chicken louisiana burger"
+                    street_food="Shrimp po boys"
                     color="black"
                 />
                 <AppTextContent
                     day="Mercredi"
-                    cuisine_du_monde="Salade césar"
-                    fourchette_verte="Tarte flambée aux champignons"
-                    burger="Racletteburger"
-                    street_food="Onigiri à la truite et sésame"
+                    cuisine_du_monde="Couscous à l'agneau, tajine de légumes"
+                    fourchette_verte="Schnitzel de poulet, pommes duchesse"
+                    burger="Cheeseburger"
+                    street_food="Hot fondue"
                     color="black"
                 />
                 <AppTextContent
                     day="Jeudi"
-                    cuisine_du_monde="Pastillas de poulet"
-                    fourchette_verte="Saucisse de veau et roesti"
-                    burger="Cheeseburger"
-                    street_food="Meatballs sandwich"
+                    cuisine_du_monde="Gyros"
+                    fourchette_verte="Orzotto à la courge et grana padano"
+                    burger="BBQ pulled pork burger"
+                    street_food="Accra de morue"
                     color="black"
                 />
                 <AppTextContent
                     day="Vendredi"
-                    cuisine_du_monde="Assortiments de makis"
-                    fourchette_verte="Farfalle al ragù"
-                    burger="LabFish burger"
-                    street_food="French tacos au poulet"
+                    cuisine_du_monde="Enchilada"
+                    fourchette_verte="Penne à la puttanesca"
+                    burger="Cheeseburger"
+                    street_food="Nems au papet, saladine croquante"
                     color="black"
                 />
             </div>

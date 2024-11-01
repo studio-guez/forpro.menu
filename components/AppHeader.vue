@@ -37,9 +37,16 @@ function formatDates (startDate: Date, endDate: Date): string {
 
     const startDay = startDate.getDate();
     const endDay = endDate.getDate();
-    const month = formatter.format(startDate); // Formatte le mois en français
+    const startMonth = formatter.format(startDate); // Formatte le mois en français
+    const endMonth = formatter.format(endDate); // Formatte le mois en français
 
-    return `du ${startDay} au ${endDay} ${month.charAt(0).toUpperCase() + month.slice(1)}`;
+
+
+    const formatedDate = startDay > endDay ?
+        `du ${startDay} ${startMonth} au ${endDay} ${endMonth}`
+        : `du ${startDay} au ${endDay} ${startMonth}`;
+
+    return formatedDate.replace('1 ', '1er ')
 };
 
 </script>
