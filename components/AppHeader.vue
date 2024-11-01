@@ -17,6 +17,7 @@
 
 const dates = (() => {
     const date = new Date()
+    // date.setDate(date.getDate() + 7)
 
     const dayOfWeek = date.getDay();
 
