@@ -31,17 +31,8 @@ async function downloadXlsx(url: string, filePath: string) {
 
 downloadXlsx(url, filePath).catch(console.error)
 
-
-let counter = 0
-Deno.cron("Run every fifteen minutes", "*/1 * * * *", () => {
+Deno.cron("Run every fifteen minutes", "*/5 * * * *", () => {
   // for (let i = 0; i < 10; i++) {
     downloadXlsx(url, filePath).catch(console.error)
-
-    const encoder = new TextEncoder()
-    const data = encoder.encode("Hello world\n")
-    console.info(`request ${counter}`)
-
-    Deno.writeFile(`./teste${counter}.txt`, data)
-    counter++
   // }
 });
