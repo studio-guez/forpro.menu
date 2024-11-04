@@ -3,6 +3,9 @@ export default defineNuxtConfig({
     nitro: {
         preset: 'node-server'
     },
+    devServer: {
+        port: 4003,
+    },
     app: {
         baseURL: '/menus'
     },
