@@ -6,45 +6,47 @@
             <div class="v-food-court__menu__header">
                 <AppHeader/>
             </div>
-            <div class="v-food-court__menu__text">
+            <div class="v-food-court__menu__text"
+                 v-if="xlslContent"
+            >
                 <AppTextContent
                     day="Lundi"
-                    cuisine_du_monde="Curry panang"
-                    fourchette_verte="Lasagne au bœuf, bouquet de salades"
-                    burger="Cheeseburger"
-                    street_food="Baguette Merguez"
+                    :cuisine_du_monde="xlslContent[1][2]"
+                    :fourchette_verte="xlslContent[2][2]"
+                    :burger="xlslContent[3][2]"
+                    :street_food="xlslContent[4][2]"
                     color="black"
                 />
                 <AppTextContent
                     day="Mardi"
-                    cuisine_du_monde="Bobun au bœuf"
-                    fourchette_verte="Panini à la mozzarella et pesto rosso, salade mêlées"
-                    burger="Chicken louisiana burger"
-                    street_food="Shrimp po boys"
+                    :cuisine_du_monde="xlslContent[5][2]"
+                    :fourchette_verte="xlslContent[6][2]"
+                    :burger="xlslContent[7][2]"
+                    :street_food="xlslContent[8][2]"
                     color="black"
                 />
                 <AppTextContent
                     day="Mercredi"
-                    cuisine_du_monde="Couscous à l'agneau, tajine de légumes"
-                    fourchette_verte="Schnitzel de poulet, pommes duchesse"
-                    burger="Cheeseburger"
-                    street_food="Hot fondue"
+                    :cuisine_du_monde="xlslContent[9][2]"
+                    :fourchette_verte="xlslContent[10][2]"
+                    :burger="xlslContent[11][2]"
+                    :street_food="xlslContent[12][2]"
                     color="black"
                 />
                 <AppTextContent
                     day="Jeudi"
-                    cuisine_du_monde="Gyros"
-                    fourchette_verte="Orzotto à la courge et grana padano"
-                    burger="BBQ pulled pork burger"
-                    street_food="Accra de morue"
+                    :cuisine_du_monde="xlslContent[13][2]"
+                    :fourchette_verte="xlslContent[14][2]"
+                    :burger="xlslContent[15][2]"
+                    :street_food="xlslContent[16][2]"
                     color="black"
                 />
                 <AppTextContent
                     day="Vendredi"
-                    cuisine_du_monde="Enchilada"
-                    fourchette_verte="Penne à la puttanesca"
-                    burger="Cheeseburger"
-                    street_food="Nems au papet, saladine croquante"
+                    :cuisine_du_monde="xlslContent[17][2]"
+                    :fourchette_verte="xlslContent[18][2]"
+                    :burger="xlslContent[19][2]"
+                    :street_food="xlslContent[20][2]"
                     color="black"
                 />
             </div>
@@ -84,10 +86,26 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import AppTextContent from "~/components/AppTextContent.vue";
+import readXlsxFile, {type Row} from "read-excel-file";
 
 const props = defineProps<{
     message?: string
 }>()
+
+const xlslContent: Ref<Row[] | null> = ref(null)
+
+
+onMounted(() => {
+    fetch('Menu_FoodCourt.xlsx')
+        .then(response => response.blob())
+        .then(blob => readXlsxFile(blob))
+        .then((rows) => {
+            xlslContent.value = rows
+            console.log( rows )
+        })
+})
+
+
 </script>
 
 

@@ -15,13 +15,14 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
+import type {CellValue} from "read-excel-file";
 
 const props = defineProps<{
     day?: string
-    cuisine_du_monde: string
-    fourchette_verte: string
-    burger: string
-    street_food: string
+    cuisine_du_monde: CellValue
+    fourchette_verte: CellValue
+    burger: CellValue
+    street_food: CellValue
     color: string
 }>()
 </script>

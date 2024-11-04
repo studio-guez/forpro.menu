@@ -6,44 +6,44 @@
             <div class="v-index__menu__header">
                 <AppHeader/>
             </div>
-            <div class="v-index__menu__text">
+            <div class="v-index__menu__text" v-if="xlslContent">
 
                 <AppTextContentFoodLab color="#37007d">
-                  Carbonnade flamande
-                  <br>Pommes frites
-                  <br>Carottes jaune confites
+                  {{xlslContent[1][1]}}
+                  <br>{{xlslContent[2][1]}}
+                  <br>{{xlslContent[3][1]}}
                   <br>&nbsp;
                 </AppTextContentFoodLab>
 
 
                 <AppTextContentFoodLab color="#37007d">
-                  Rôti de porc, sauce aux champignons
-                  <br>Polenta gratinée
-                  <br>Mousseline de courges
+                  {{xlslContent[4][1]}}
+                  <br>{{xlslContent[5][1]}}
+                  <br>{{xlslContent[6][1]}}
                   <br>&nbsp;
                 </AppTextContentFoodLab>
 
 
                 <AppTextContentFoodLab color="#37007d">
-                  Cuisse de canette laquée
-                  <br>Nouilles Udon
-                  <br>Pack Choi
+                  {{xlslContent[7][1]}}
+                  <br>{{xlslContent[8][1]}}
+                  <br>{{xlslContent[9][1]}}
                   <br>&nbsp;
                 </AppTextContentFoodLab>
 
 
                 <AppTextContentFoodLab color="#37007d">
-                  Cordonbleu au Gruyère AOP
-                  <br>Pommes rissolées
-                  <br>Cote de blette
+                  {{xlslContent[10][1]}}
+                  <br>{{xlslContent[11][1]}}
+                  <br>{{xlslContent[12][1]}}
                   <br>&nbsp;
                 </AppTextContentFoodLab>
 
 
                 <AppTextContentFoodLab color="#37007d">
-                  Filet de merlu, vierge à la pomme.
-                  <br>Fregola Sarda à la tomate séchée
-                  <br>Chou kale sauté
+                  {{xlslContent[13][1]}}
+                  <br>{{xlslContent[14][1]}}
+                  <br>{{xlslContent[15][1]}}
                   <br>&nbsp;
                 </AppTextContentFoodLab>
             </div>
@@ -60,13 +60,27 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
-import AppTextContent from "~/components/AppTextContent.vue";
 import AppSvgFoodLab from "~/components/AppSvgFoodLab.vue";
 import AppTextContentFoodLab from "~/components/AppTextContentFoodLab.vue";
+import readXlsxFile, {type Row} from "read-excel-file";
 
 const props = defineProps<{
     message?: string
 }>()
+
+const xlslContent: Ref<Row[] | null> = ref(null)
+
+onMounted(() => {
+    fetch('Menu_FoodLab.xlsx')
+        .then(response => response.blob())
+        .then(blob => readXlsxFile(blob))
+        .then((rows) => {
+            xlslContent.value = rows
+            console.log( rows )
+        })
+})
+
+
 </script>
 
 

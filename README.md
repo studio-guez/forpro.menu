@@ -8,6 +8,9 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
 https://nextcloud.for-pro.ch/s/nzwDkxkppBQQXiQ/download/Menu_FoodCourt.xlsx
 https://nextcloud.for-pro.ch/s/eG6z2nARQ8JnGqy/download/Menu_FoodLab.xlsx
 
+--- update
+https://nextcloud.for-pro.ch/s/bfooDAYQseexsmB/download/Menu_FoodCourt.xlsx
+
 
 ## Setup
 
