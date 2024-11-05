@@ -8,5 +8,8 @@ export default defineNuxtConfig({
     devtools: {enabled: true},
     css: [
         '~/assets/_main.scss'
-    ]
+    ],
+    imports: {
+        autoImport: false,
+    }
 })

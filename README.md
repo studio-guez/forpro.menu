@@ -10,6 +10,7 @@ https://nextcloud.for-pro.ch/s/eG6z2nARQ8JnGqy/download/Menu_FoodLab.xlsx
 
 --- update
 https://nextcloud.for-pro.ch/s/bfooDAYQseexsmB/download/Menu_FoodCourt.xlsx
+https://nextcloud.for-pro.ch/s/mL7CSBZysgGqawz/download/Menu_FoodLab_2.xlsx
 
 
 ## Setup

@@ -72,5 +72,44 @@ a {
     margin: 0; /* Supprime également les marges internes du body */
     -webkit-print-color-adjust: exact; /* Pour les navigateurs basés sur WebKit (Chrome, Safari) */
     print-color-adjust: exact; /* Pour les autres navigateurs */
+    background: white;
+  }
+
+  .app-page {
+    transform: none !important;
+  }
+}
+
+
+
+.app-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-page__menu {
+  width: 21cm;
+  height: 29.7cm;
+  position: relative;
+}
+
+@media screen {
+  .app-page {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform-origin: center center;
+    transform: scale(1);
+  }
+
+  .app-page__menu {
+    background: white;
+    transform-origin: center center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 20px 25px -10px rgba(0,0,0,.25);
   }
 }

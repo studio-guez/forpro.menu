@@ -1,49 +1,52 @@
 <template>
     <section
-        class="v-index"
+        class="v-index app-page"
+        ref="elementToScale"
     >
-        <div class="v-index__menu">
+        <div class="v-index__menu app-page__menu"
+             ref="elementForSize"
+        >
             <div class="v-index__menu__header">
                 <AppHeader/>
             </div>
-            <div class="v-index__menu__text" v-if="xlslContent">
+            <div class="v-index__menu__text" v-if="xlsxContent">
 
                 <AppTextContentFoodLab color="#37007d">
-                  {{xlslContent[1][1]}}
-                  <br>{{xlslContent[2][1]}}
-                  <br>{{xlslContent[3][1]}}
+                  {{ xlsxContent[1][1] }}
+                  <br>{{ xlsxContent[2][1] }}
+                  <br>{{ xlsxContent[3][1] }}
                   <br>&nbsp;
                 </AppTextContentFoodLab>
 
 
                 <AppTextContentFoodLab color="#37007d">
-                  {{xlslContent[4][1]}}
-                  <br>{{xlslContent[5][1]}}
-                  <br>{{xlslContent[6][1]}}
+                  {{ xlsxContent[4][1] }}
+                  <br>{{ xlsxContent[5][1] }}
+                  <br>{{ xlsxContent[6][1] }}
                   <br>&nbsp;
                 </AppTextContentFoodLab>
 
 
                 <AppTextContentFoodLab color="#37007d">
-                  {{xlslContent[7][1]}}
-                  <br>{{xlslContent[8][1]}}
-                  <br>{{xlslContent[9][1]}}
+                  {{ xlsxContent[7][1] }}
+                  <br>{{ xlsxContent[8][1] }}
+                  <br>{{ xlsxContent[9][1] }}
                   <br>&nbsp;
                 </AppTextContentFoodLab>
 
 
                 <AppTextContentFoodLab color="#37007d">
-                  {{xlslContent[10][1]}}
-                  <br>{{xlslContent[11][1]}}
-                  <br>{{xlslContent[12][1]}}
+                  {{ xlsxContent[10][1] }}
+                  <br>{{ xlsxContent[11][1] }}
+                  <br>{{ xlsxContent[12][1] }}
                   <br>&nbsp;
                 </AppTextContentFoodLab>
 
 
                 <AppTextContentFoodLab color="#37007d">
-                  {{xlslContent[13][1]}}
-                  <br>{{xlslContent[14][1]}}
-                  <br>{{xlslContent[15][1]}}
+                  {{ xlsxContent[13][1] }}
+                  <br>{{ xlsxContent[14][1] }}
+                  <br>{{ xlsxContent[15][1] }}
                   <br>&nbsp;
                 </AppTextContentFoodLab>
             </div>
@@ -59,25 +62,41 @@
 
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import AppSvgFoodLab from "~/components/AppSvgFoodLab.vue";
-import AppTextContentFoodLab from "~/components/AppTextContentFoodLab.vue";
+import {nextTick, onBeforeUnmount, onMounted, ref, type Ref, type UnwrapRef} from 'vue'
 import readXlsxFile, {type Row} from "read-excel-file";
+import AppHeader from "../components/AppHeader.vue";
+import AppTextContentFoodLab from "../components/AppTextContentFoodLab.vue";
+import AppSvgFoodLab from "../components/AppSvgFoodLab.vue";
+import {scaleTransform} from "~/utils/scaleTransform";
 
-const props = defineProps<{
-    message?: string
-}>()
+const xlsxContent: Ref<Row[] | null> = ref(null)
 
-const xlslContent: Ref<Row[] | null> = ref(null)
+const elementToScale: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
+const elementForSize: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
 
 onMounted(() => {
     fetch('Menu_FoodLab.xlsx')
         .then(response => response.blob())
         .then(blob => readXlsxFile(blob))
         .then((rows) => {
-            xlslContent.value = rows
+            xlsxContent.value = rows
             console.log( rows )
         })
+    nextTick(() => {
+        setPageScale()
+        window.addEventListener('resize', setPageScale)
+    })
+})
+
+function setPageScale() {
+    if(elementToScale.value && elementForSize.value) scaleTransform({
+        elementToScale: elementToScale.value,
+        elementForSize: elementForSize.value
+    })
+}
+
+onBeforeUnmount(() => {
+    window.removeEventListener('resize', setPageScale)
 })
 
 
@@ -88,16 +107,11 @@ onMounted(() => {
 
 
 <style lang="scss" scoped >
-.v-index {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.v-index__menu {
-    width: 21cm;
-    height: 29.7cm;
-    position: relative;
+@media screen {
+  :global(body) {
+    background: var(--app-color--orange);
+  }
 }
 
 .v-index__menu__header {

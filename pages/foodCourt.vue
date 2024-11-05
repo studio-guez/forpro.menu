@@ -1,52 +1,55 @@
 <template>
     <section
-        class="v-food-court"
+        class="v-food-court app-page"
+        ref="elementToScale"
     >
-        <div class="v-food-court__menu">
+        <div class="v-food-court__menu app-page__menu"
+             ref="elementForSize"
+        >
             <div class="v-food-court__menu__header">
                 <AppHeader/>
             </div>
             <div class="v-food-court__menu__text"
-                 v-if="xlslContent"
+                 v-if="xlsxContent"
             >
                 <AppTextContent
                     day="Lundi"
-                    :cuisine_du_monde="xlslContent[1][2]"
-                    :fourchette_verte="xlslContent[2][2]"
-                    :burger="xlslContent[3][2]"
-                    :street_food="xlslContent[4][2]"
+                    :cuisine_du_monde="xlsxContent[1][2]"
+                    :fourchette_verte="xlsxContent[2][2]"
+                    :burger="xlsxContent[3][2]"
+                    :street_food="xlsxContent[4][2]"
                     color="black"
                 />
                 <AppTextContent
                     day="Mardi"
-                    :cuisine_du_monde="xlslContent[5][2]"
-                    :fourchette_verte="xlslContent[6][2]"
-                    :burger="xlslContent[7][2]"
-                    :street_food="xlslContent[8][2]"
+                    :cuisine_du_monde="xlsxContent[5][2]"
+                    :fourchette_verte="xlsxContent[6][2]"
+                    :burger="xlsxContent[7][2]"
+                    :street_food="xlsxContent[8][2]"
                     color="black"
                 />
                 <AppTextContent
                     day="Mercredi"
-                    :cuisine_du_monde="xlslContent[9][2]"
-                    :fourchette_verte="xlslContent[10][2]"
-                    :burger="xlslContent[11][2]"
-                    :street_food="xlslContent[12][2]"
+                    :cuisine_du_monde="xlsxContent[9][2]"
+                    :fourchette_verte="xlsxContent[10][2]"
+                    :burger="xlsxContent[11][2]"
+                    :street_food="xlsxContent[12][2]"
                     color="black"
                 />
                 <AppTextContent
                     day="Jeudi"
-                    :cuisine_du_monde="xlslContent[13][2]"
-                    :fourchette_verte="xlslContent[14][2]"
-                    :burger="xlslContent[15][2]"
-                    :street_food="xlslContent[16][2]"
+                    :cuisine_du_monde="xlsxContent[13][2]"
+                    :fourchette_verte="xlsxContent[14][2]"
+                    :burger="xlsxContent[15][2]"
+                    :street_food="xlsxContent[16][2]"
                     color="black"
                 />
                 <AppTextContent
                     day="Vendredi"
-                    :cuisine_du_monde="xlslContent[17][2]"
-                    :fourchette_verte="xlslContent[18][2]"
-                    :burger="xlslContent[19][2]"
-                    :street_food="xlslContent[20][2]"
+                    :cuisine_du_monde="xlsxContent[17][2]"
+                    :fourchette_verte="xlsxContent[18][2]"
+                    :burger="xlsxContent[19][2]"
+                    :street_food="xlsxContent[20][2]"
                     color="black"
                 />
             </div>
@@ -61,48 +64,43 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import AppTextContent from "~/components/AppTextContent.vue";
+import {nextTick, onBeforeUnmount, onMounted, ref, type Ref, type UnwrapRef} from 'vue'
 import readXlsxFile, {type Row} from "read-excel-file";
+import AppHeader from "../components/AppHeader.vue";
+import AppTextContent from "../components/AppTextContent.vue";
+import AppSvgFoodCourt from "../components/AppSvgFoodCourt.vue";
+import {scaleTransform} from "~/utils/scaleTransform";
 
-const props = defineProps<{
-    message?: string
-}>()
+const xlsxContent: Ref<Row[] | null> = ref(null)
 
-const xlslContent: Ref<Row[] | null> = ref(null)
-
+const elementToScale: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
+const elementForSize: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
 
 onMounted(() => {
     fetch('Menu_FoodCourt.xlsx')
         .then(response => response.blob())
         .then(blob => readXlsxFile(blob))
         .then((rows) => {
-            xlslContent.value = rows
+            xlsxContent.value = rows
             console.log( rows )
         })
+
+    nextTick(() => {
+        setPageScale()
+        window.addEventListener('resize', setPageScale)
+    })
+})
+
+function setPageScale() {
+    if(elementToScale.value && elementForSize.value) scaleTransform({
+        elementToScale: elementToScale.value,
+        elementForSize: elementForSize.value
+    })
+}
+
+onBeforeUnmount(() => {
+    window.removeEventListener('resize', setPageScale)
 })
 
 
@@ -113,16 +111,10 @@ onMounted(() => {
 
 
 <style lang="scss" scoped >
-.v-food-court {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.v-food-court__menu {
-    width: 21cm;
-    height: 29.7cm;
-    position: relative;
+@media screen {
+  :global(body) {
+    background: var(--app-color--yellow);
+  }
 }
 
 .v-food-court__menu__header {
