@@ -5,7 +5,7 @@ export function scaleTransform({elementToScale, elementForSize}: {
     //prevent scale transformation
     elementToScale.style.transform = ""
 
-    const sizeReferencePadding = 40;
+    const sizeReferencePadding = 5;
 
     const sizeReference = {
         width:  window.innerWidth   - sizeReferencePadding * 2,
