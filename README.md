@@ -13,6 +13,12 @@ https://nextcloud.for-pro.ch/s/bfooDAYQseexsmB/download/Menu_FoodCourt.xlsx
 https://nextcloud.for-pro.ch/s/mL7CSBZysgGqawz/download/Menu_FoodLab_2.xlsx
 
 
+--- last
+https://hosting.for-pro.ch/foodcourt.xlsx
+https://hosting.for-pro.ch/foodlab.xlsx
+
+
+
 ## Setup
 
 Make sure to install the dependencies:
