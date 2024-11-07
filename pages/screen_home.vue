@@ -106,10 +106,10 @@ onMounted(() => {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: .25vw;
   background-color: white;
   box-sizing: border-box;
-  padding: .25vw;
+  //padding: .25vw;
+  //gap: .25vw;
   height: 100%;
   width: 100%;
 }
