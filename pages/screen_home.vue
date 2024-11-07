@@ -122,16 +122,6 @@ onMounted(() => {
   position: relative;
 }
 
-.v-screen-home__box__item__name {
-  position: absolute;
-  top: .5em;
-  font-size: 2vw;
-  line-height: 1em;
-  font-weight: 900;
-  text-align: center;
-  width: 100%;
-}
-
 .v-screen-home__box__item__foodMain {
   font-size: 4vw;
   line-height: 1em;
