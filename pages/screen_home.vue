@@ -13,7 +13,6 @@
                 backgroundImage: `url(${menu?.img})`
             }"
        >
-         <div class="v-screen-home__box__item__name" >{{menu?.name}}</div>
          <div class="v-screen-home__box__item__foodMain" >{{menu?.foodMain}}</div>
          <div class="v-screen-home__box__item__foodDesc" >{{menu?.foodDesc}}</div>
          <div class="v-screen-home__box__item__price" >
@@ -150,7 +149,7 @@ onMounted(() => {
 .v-screen-home__box__item__price {
   position: absolute;
   bottom: .5em;
-  font-size: 2vw;
+  font-size: 2.8vw;
   line-height: 1em;
   font-weight: 900;
   text-align: center;
