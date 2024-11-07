@@ -99,6 +99,10 @@ onMounted(() => {
   font-size: 1.25vw;
   text-align: center;
   font-weight: 900;
+
+  &:first-letter {
+    text-transform: capitalize;
+  }
 }
 
 .v-screen-home__box {
