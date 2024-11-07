@@ -49,14 +49,18 @@ const stringFormatedDate = new Date().toLocaleDateString('fr-FR', {
 })
 
 const imgMenuURL = [
-    'bg-burger.jpg',
     'bg-cuisine_du_monde.jpg',
     'bg-fourchette_verte.jpg',
+    'bg-burger.jpg',
     'bg-street_food.jpg',
 ]
 
 const todayMenu = computed(() => {
-    return Array.from({length: 4}, (_, i) => {
+    // const order = [0, 1, 2, 3]
+    // const order = [2, 1, 3, 0]
+    const order = [1, 2, 0, 3]
+
+    const arrayToReturn = Array.from({length: 4}, (_, i) => {
         if( xlsxContent.value === null ) return null
         return {
             name:     xlsxContent.value[currentDayXLSXIndex * 4 + i + 1][1],
@@ -66,6 +70,11 @@ const todayMenu = computed(() => {
             price2: xlsxContent.value[currentDayXLSXIndex * 4 + i + 1][5],
             img:      imgMenuURL[i],
         }
+    })
+
+
+    return order.map((value) => {
+        return arrayToReturn[value]
     })
 
 })
