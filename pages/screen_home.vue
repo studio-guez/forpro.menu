@@ -80,13 +80,22 @@ const todayMenu = computed(() => {
 })
 
 onMounted(() => {
+    getXLSLContent()
+    window.setInterval(() => {
+            getXLSLContent()
+        },
+        5_000
+    )
+})
+
+function getXLSLContent() {
     fetch('Menu_FoodCourt.xlsx')
         .then(response => response.blob())
         .then(blob => readXlsxFile(blob))
         .then((rows) => {
             xlsxContent.value = rows
         })
-})
+}
 </script>
 
 
