@@ -14,8 +14,8 @@
             }"
        >
          <div class="v-screen-home__box__item__name" >{{menu?.name}}</div>
-         <div class="v-screen-home__box__item__foodDesc" >{{menu?.foodDesc}}</div>
          <div class="v-screen-home__box__item__foodMain" >{{menu?.foodMain}}</div>
+         <div class="v-screen-home__box__item__foodDesc" >{{menu?.foodDesc}}</div>
          <div class="v-screen-home__box__item__price" >
            <div>{{menu?.price1}}</div>
            <div>{{menu?.price2}}</div>
