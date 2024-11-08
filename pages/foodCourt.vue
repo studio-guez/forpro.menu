@@ -14,42 +14,42 @@
             >
                 <AppTextContent
                     day="Lundi"
-                    :cuisine_du_monde="xlsxContent[1][2]"
-                    :fourchette_verte="xlsxContent[2][2]"
-                    :burger="xlsxContent[3][2]"
-                    :street_food="xlsxContent[4][2]"
+                    :cuisine_du_monde="[xlsxContent[1][2], xlsxContent[1][3]]"
+                    :fourchette_verte="[xlsxContent[2][2], xlsxContent[2][3]]"
+                    :burger=          "[xlsxContent[3][2], xlsxContent[3][3]]"
+                    :street_food=     "[xlsxContent[4][2], xlsxContent[4][3]]"
                     color="black"
                 />
                 <AppTextContent
                     day="Mardi"
-                    :cuisine_du_monde="xlsxContent[5][2]"
-                    :fourchette_verte="xlsxContent[6][2]"
-                    :burger="xlsxContent[7][2]"
-                    :street_food="xlsxContent[8][2]"
+                    :cuisine_du_monde="[xlsxContent[5][2], xlsxContent[5][3]]"
+                    :fourchette_verte="[xlsxContent[6][2], xlsxContent[6][3]]"
+                    :burger=          "[xlsxContent[7][2], xlsxContent[7][3]]"
+                    :street_food=     "[xlsxContent[8][2], xlsxContent[8][3]]"
                     color="black"
                 />
                 <AppTextContent
                     day="Mercredi"
-                    :cuisine_du_monde="xlsxContent[9][2]"
-                    :fourchette_verte="xlsxContent[10][2]"
-                    :burger="xlsxContent[11][2]"
-                    :street_food="xlsxContent[12][2]"
+                    :cuisine_du_monde="[xlsxContent[9][2], xlsxContent[9][3]]"
+                    :fourchette_verte="[xlsxContent[10][2], xlsxContent[10][3]]"
+                    :burger=          "[xlsxContent[11][2], xlsxContent[11][3]]"
+                    :street_food=     "[xlsxContent[12][2], xlsxContent[12][3]]"
                     color="black"
                 />
                 <AppTextContent
                     day="Jeudi"
-                    :cuisine_du_monde="xlsxContent[13][2]"
-                    :fourchette_verte="xlsxContent[14][2]"
-                    :burger="xlsxContent[15][2]"
-                    :street_food="xlsxContent[16][2]"
+                    :cuisine_du_monde="[xlsxContent[13][2], xlsxContent[13][3]]"
+                    :fourchette_verte="[xlsxContent[14][2], xlsxContent[14][3]]"
+                    :burger=          "[xlsxContent[15][2], xlsxContent[15][3]]"
+                    :street_food=     "[xlsxContent[16][2], xlsxContent[16][3]]"
                     color="black"
                 />
                 <AppTextContent
                     day="Vendredi"
-                    :cuisine_du_monde="xlsxContent[17][2]"
-                    :fourchette_verte="xlsxContent[18][2]"
-                    :burger="xlsxContent[19][2]"
-                    :street_food="xlsxContent[20][2]"
+                    :cuisine_du_monde="[xlsxContent[17][2], xlsxContent[17][3]]"
+                    :fourchette_verte="[xlsxContent[18][2], xlsxContent[18][3]]"
+                    :burger=          "[xlsxContent[19][2], xlsxContent[19][3]]"
+                    :street_food=     "[xlsxContent[20][2], xlsxContent[20][3]]"
                     color="black"
                 />
             </div>

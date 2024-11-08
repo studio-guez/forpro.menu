@@ -2,10 +2,10 @@
     <section class="v-app-text-content"
     >
         <div class="v-app-text-content__title" v-if="day">{{day}}</div>
-        <div class="v-app-text-content__content">{{cuisine_du_monde}}</div>
-        <div class="v-app-text-content__content">{{fourchette_verte}}</div>
-        <div class="v-app-text-content__content">{{burger}}</div>
-        <div class="v-app-text-content__content">{{street_food}}</div>
+        <div class="v-app-text-content__content">{{cuisine_du_monde.filter(Boolean).join(", ")}}</div>
+        <div class="v-app-text-content__content">{{fourchette_verte.filter(Boolean).join(", ")}}</div>
+        <div class="v-app-text-content__content">{{burger.filter(Boolean).join(", ")}}</div>
+        <div class="v-app-text-content__content">{{street_food.filter(Boolean).join(", ")}}</div>
     </section>
 </template>
 
@@ -19,10 +19,10 @@ import type {CellValue} from "read-excel-file";
 
 const props = defineProps<{
     day?: string
-    cuisine_du_monde: CellValue
-    fourchette_verte: CellValue
-    burger: CellValue
-    street_food: CellValue
+    cuisine_du_monde: CellValue[]
+    fourchette_verte: CellValue[]
+    burger: CellValue[]
+    street_food: CellValue[]
     color: string
 }>()
 </script>
