@@ -75,7 +75,7 @@ const elementToScale: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
 const elementForSize: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
 
 onMounted(() => {
-    fetch('https://hosting.for-pro.ch/foodcourt.xlsx')
+    fetch('https://hosting.for-pro.ch/foodlab.xlsx')
         .then(response => response.blob())
         .then(blob => readXlsxFile(blob))
         .then((rows) => {

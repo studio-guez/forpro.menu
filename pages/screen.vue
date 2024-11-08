@@ -13,6 +13,7 @@
                 backgroundImage: `url(${menu?.img})`
             }"
        >
+         <div class="v-screen-home__box__item__name" >{{menu?.name}}</div>
          <div class="v-screen-home__box__item__foodMain" >{{menu?.foodMain}}</div>
          <div class="v-screen-home__box__item__foodDesc" >{{menu?.foodDesc}}</div>
          <div class="v-screen-home__box__item__price" >
@@ -89,7 +90,7 @@ onMounted(() => {
 })
 
 function getXLSLContent() {
-    fetch('Menu_FoodCourt.xlsx')
+    fetch('https://hosting.for-pro.ch/foodcourt.xlsx')
         .then(response => response.blob())
         .then(blob => readXlsxFile(blob))
         .then((rows) => {
@@ -123,6 +124,16 @@ function getXLSLContent() {
   }
 }
 
+.v-screen-home__box__item__name {
+  position: absolute;
+  top: .5em;
+  font-size: 2vw;
+  line-height: 1em;
+  font-weight: 900;
+  text-align: center;
+  width: 100%;
+}
+
 .v-screen-home__box {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -136,7 +147,7 @@ function getXLSLContent() {
 }
 
 .v-screen-home__box__item {
-  background-size: 150% auto;
+  background-size: 125% auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
