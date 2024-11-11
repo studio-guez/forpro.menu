@@ -58,8 +58,8 @@ const imgMenuURL = [
 
 const todayMenu = computed(() => {
     // const order = [0, 1, 2, 3]
-    // const order = [2, 1, 3, 0]
-    const order = [1, 2, 0, 3]
+    const order = [2, 0, 1, 3]
+    // const order = [1, 2, 0, 3]
 
     const arrayToReturn = Array.from({length: 4}, (_, i) => {
         if( xlsxContent.value === null ) return null
