@@ -47,8 +47,8 @@ function formatDates (startDate: Date, endDate: Date): string {
         `du ${startDay} ${startMonth} au ${endDay} ${endMonth}`
         : `du ${startDay} au ${endDay} ${startMonth}`;
 
-    return formatedDate.replace('1 ', '1er ')
-};
+    return formatedDate.replace(' 1 ', '1er ')
+}
 
 </script>
 
