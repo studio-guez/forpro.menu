@@ -15,9 +15,11 @@
 
 <script setup lang="ts">
 
+import {useRouter} from "#app";
+
 const dates = (() => {
     const date = new Date()
-    // date.setDate(date.getDate() + 7)
+    if( useRouter().currentRoute.value.query.next ) date.setDate(date.getDate() + 7)
 
     const dayOfWeek = date.getDay();
 

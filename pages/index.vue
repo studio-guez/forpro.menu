@@ -69,22 +69,12 @@ import AppTextContentFoodLab from "../components/AppTextContentFoodLab.vue";
 import AppSvgFoodLab from "../components/AppSvgFoodLab.vue";
 import {scaleTransform} from "~/utils/scaleTransform";
 import {useRouter} from "#app";
+import {isEvenWeek} from "~/utils/isEvenWeek";
 
 const xlsxContent: Ref<Row[] | null> = ref(null)
 
 const elementToScale: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
 const elementForSize: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
-
-function isEvenWeek(date: Date): boolean {
-    const startOfYear = new Date(date.getFullYear(), 0, 1); // Premier jour de l'année
-    const dayOfYear = Math.floor((date.getTime() - startOfYear.getTime()) / (1000 * 60 * 60 * 24)) + 1; // Numéro du jour dans l'année
-
-    // Numéro de la semaine selon ISO 8601
-    const weekNumber = Math.ceil((dayOfYear + startOfYear.getDay() - 1) / 7);
-
-    return weekNumber % 2 === 0; // true si paire, false sinon
-}
-
 
 onMounted(() => {
 
