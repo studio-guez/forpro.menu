@@ -81,7 +81,7 @@ onMounted(() => {
     const dateRef = new Date()
 
     if(useRouter().currentRoute.value.query.next) {
-        dateRef.setDate(dateRef.getDay() + 7)
+        dateRef.setDate(dateRef.getDate() + 7)
     }
 
     fetch('https://hosting.for-pro.ch/foodlab.xlsx')
