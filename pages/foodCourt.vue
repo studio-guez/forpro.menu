@@ -84,7 +84,7 @@ onMounted(() => {
     const dateRef = new Date()
 
     if(useRouter().currentRoute.value.query.next) {
-        dateRef.setDate(dateRef.getDay() + 7)
+        dateRef.setDate(dateRef.getDay() + 8)
     }
 
     fetch('https://hosting.for-pro.ch/foodcourt.xlsx')
