@@ -71,6 +71,8 @@ import AppHeader from "../components/AppHeader.vue";
 import AppTextContent from "../components/AppTextContent.vue";
 import AppSvgFoodCourt from "../components/AppSvgFoodCourt.vue";
 import {scaleTransform} from "~/utils/scaleTransform";
+import {useRouter} from "#app";
+import {isEvenWeek} from "~/utils/isEvenWeek";
 
 const xlsxContent: Ref<Row[] | null> = ref(null)
 
@@ -78,13 +80,23 @@ const elementToScale: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
 const elementForSize: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
 
 onMounted(() => {
+
+    const dateRef = new Date()
+
+    if(useRouter().currentRoute.value.query.next) {
+        dateRef.setDate(dateRef.getDay() + 7)
+    }
+
     fetch('https://hosting.for-pro.ch/foodcourt.xlsx')
         .then(response => response.blob())
-        .then(blob => readXlsxFile(blob))
+        .then(blob => readXlsxFile(blob, {
+            sheet: isEvenWeek(dateRef) ? 2 : 1
+        }))
         .then((rows) => {
             xlsxContent.value = rows
-            console.log( rows )
-        })
+        }).catch(() => {
+        xlsxContent.value = null
+    })
 
     nextTick(() => {
         setPageScale()
