@@ -34,15 +34,22 @@
 
 
 <script setup lang="ts">
-import {computed, defineProps, nextTick, onMounted, ref, type Ref, type UnwrapRef} from 'vue'
+import {computed, onMounted, ref, type Ref} from 'vue'
 import readXlsxFile, {type Row} from "read-excel-file";
-import AppTextContent from "~/components/AppTextContent.vue";
+import {isEvenWeek} from "~/utils/isEvenWeek";
+import {useRouter} from "#app";
 
 const xlsxContent: Ref<Row[] | null> = ref(null)
 
 const currentDayXLSXIndex = new Date().getDay() - 1
 
-const stringFormatedDate = new Date().toLocaleDateString('fr-FR', {
+const dateRef = new Date()
+
+if(useRouter().currentRoute.value.query.next) {
+    dateRef.setDate(dateRef.getDate() + 7)
+}
+
+const stringFormatedDate = new Date(dateRef).toLocaleDateString('fr-FR', {
     weekday: 'long',
     day: 'numeric',
     month: 'long',
@@ -92,10 +99,14 @@ onMounted(() => {
 function getXLSLContent() {
     fetch('https://hosting.for-pro.ch/foodcourt.xlsx')
         .then(response => response.blob())
-        .then(blob => readXlsxFile(blob))
+        .then(blob => readXlsxFile(blob, {
+            sheet: isEvenWeek(dateRef) ? 2 : 1
+        }))
         .then((rows) => {
             xlsxContent.value = rows
-        })
+        }).catch(() => {
+        xlsxContent.value = null
+    })
 }
 </script>
 
