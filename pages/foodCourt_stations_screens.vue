@@ -9,7 +9,7 @@
                 backgroundImage: `url(${todayMenu[screenIndex]?.img})`
             }"
       >
-        <div class="v-screen-stations__box__item__name" >{{todayMenu[screenIndex]?.name}}</div>
+<!--        <div class="v-screen-stations__box__item__name" >{{todayMenu[screenIndex]?.name}}</div>-->
         <div class="v-screen-stations__box__item__foodMain" >{{todayMenu[screenIndex]?.foodMain}}</div>
         <div class="v-screen-stations__box__item__foodDesc" >{{todayMenu[screenIndex]?.foodDesc}}</div>
         <div class="v-screen-stations__box__item__price" >
@@ -183,7 +183,7 @@ function getXLSLContent() {
 .v-screen-stations__box__item__price {
   position: absolute;
   bottom: .5em;
-  font-size: 2.8vw;
+  font-size: 3.8vw;
   line-height: 1em;
   font-weight: 900;
   text-align: center;
