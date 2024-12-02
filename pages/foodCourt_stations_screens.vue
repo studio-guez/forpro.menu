@@ -99,7 +99,7 @@ function getXLSLContent() {
     fetch('https://hosting.for-pro.ch/foodcourt.xlsx')
         .then(response => response.blob())
         .then(blob => readXlsxFile(blob, {
-            sheet: isEvenWeek(dateRef) ? 2 : 1
+            sheet: isEvenWeek(dateRef) ? 1 : 2
         }))
         .then((rows) => {
             xlsxContent.value = rows
@@ -171,6 +171,9 @@ function getXLSLContent() {
   line-height: 1em;
   font-weight: 900;
   text-align: center;
+  box-sizing: border-box;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .v-screen-stations__box__item__foodDesc {
