@@ -16,23 +16,10 @@
 <script setup lang="ts">
 
 import {useRouter} from "#app";
+import {getDateRef} from "~/utils/getDateRef";
 
-const dates = (() => {
-    const date = new Date()
-    if( useRouter().currentRoute.value.query.next ) date.setDate(date.getDate() + 7)
-
-    const dayOfWeek = date.getDay();
-
-    const diffToMonday = dayOfWeek === 0 ? -6 : 1 - dayOfWeek
-    const diffToFriday = 5 - dayOfWeek
-
-    const monday = new Date(date)
-    monday.setDate(date.getDate() + diffToMonday)
-
-    const friday = new Date(date)
-    friday.setDate(date.getDate() + diffToFriday)
-
-    return { monday, friday };
+const dates: { friday: Date; monday: Date } = (() => {
+    return getDateRef(!!useRouter().currentRoute.value.query.next)
 })()
 
 function formatDates (startDate: Date, endDate: Date): string {

@@ -70,6 +70,7 @@ import AppSvgFoodLab from "../components/AppSvgFoodLab.vue";
 import {scaleTransform} from "~/utils/scaleTransform";
 import {useRouter} from "#app";
 import {isEvenWeek} from "~/utils/isEvenWeek";
+import {getDateRef} from "~/utils/getDateRef";
 
 const xlsxContent: Ref<Row[] | null> = ref(null)
 
@@ -78,11 +79,7 @@ const elementForSize: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
 
 onMounted(() => {
 
-    const dateRef = new Date()
-
-    if(useRouter().currentRoute.value.query.next) {
-        dateRef.setDate(dateRef.getDate() + 7)
-    }
+    const dateRef: Date = getDateRef(!!useRouter().currentRoute.value.query.next).monday
 
     fetch('https://hosting.for-pro.ch/foodlab.xlsx')
         .then(response => response.blob())
