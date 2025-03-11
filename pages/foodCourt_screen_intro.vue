@@ -1,5 +1,14 @@
 <template>
-    <section class="v-screen-home"
+  <section class="v-screen-home"
+           :class="{
+              'show-second-image': showSecondImage
+           }"
+  >
+    <div class="v-screen-home__menu-content">
+      <img class="v-screen-home__menu-content__img"
+           src="/ouverture_terrasse.png" alt="ouverture de la terrasse">
+    </div>
+    <div class="v-screen-home__menu-content"
     >
       <div class="v-screen-home__title">
        {{stringFormatedDate}}
@@ -26,7 +35,8 @@
      </div>
 
       <div></div>
-    </section>
+    </div>
+  </section>
 </template>
 
 
@@ -38,6 +48,8 @@ import {computed, onMounted, ref, type Ref} from 'vue'
 import readXlsxFile, {type Row} from "read-excel-file";
 import {isEvenWeek} from "~/utils/isEvenWeek";
 import {useRouter} from "#app";
+
+const showSecondImage = ref(false)
 
 const xlsxContent: Ref<Row[] | null> = ref(null)
 
@@ -94,6 +106,10 @@ onMounted(() => {
         },
         5_000
     )
+
+    window.setInterval(() => {
+        showSecondImage.value = !showSecondImage.value
+    }, 5_000)
 })
 
 function getXLSLContent() {
@@ -116,11 +132,38 @@ function getXLSLContent() {
 
 <style lang="scss" scoped >
 .v-screen-home {
+  .v-screen-home__menu-content:nth-child(1) {
+    display: none !important;
+  }
+  .v-screen-home__menu-content:nth-child(2) {
+    display: block !important;
+  }
+
+  &.show-second-image {
+    .v-screen-home__menu-content:nth-child(1) {
+      display: block !important;
+    }
+    .v-screen-home__menu-content:nth-child(2) {
+      display: none !important;
+    }
+  }
+}
+
+.v-screen-home__menu-content {
   position: fixed;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  top: 0;
+  left: 0;
+}
+
+.v-screen-home__menu-content__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .v-screen-home__title {
@@ -129,6 +172,7 @@ function getXLSLContent() {
   font-size: 1.25vw;
   text-align: center;
   font-weight: 900;
+  height: 2.5vw;
 
   &:first-letter {
     text-transform: capitalize;
@@ -153,7 +197,7 @@ function getXLSLContent() {
   box-sizing: border-box;
   //padding: .25vw;
   //gap: .25vw;
-  height: 100%;
+  height: calc( 100% - 2.5vw );
   width: 100%;
 }
 
