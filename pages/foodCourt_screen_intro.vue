@@ -109,7 +109,7 @@ onMounted(() => {
 
     window.setInterval(() => {
         showSecondImage.value = !showSecondImage.value
-    }, 5_000)
+    }, 6_000)
 })
 
 function getXLSLContent() {
