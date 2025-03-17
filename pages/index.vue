@@ -50,6 +50,18 @@
                   <br>&nbsp;
                 </AppTextContentFoodLab>
             </div>
+            <div class="v-index__origin"
+                 v-if="xlsxContent"
+            >
+              <div>{{xlsxContent[18][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[19][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[20][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[21][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[22][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[23][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[24][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[25][1] || '&nbsp;'}}</div>
+            </div>
             <div class="v-index__menu__bg">
                 <AppSvgFoodLab/>
             </div>
@@ -87,6 +99,9 @@ onMounted(() => {
             sheet: isEvenWeek(dateRef) ? 2 : 1
         }))
         .then((rows) => {
+
+            console.log(xlsxContent)
+
             xlsxContent.value = rows
         }).catch(() => {
           xlsxContent.value = null
@@ -140,6 +155,18 @@ onBeforeUnmount(() => {
     flex-direction: column;
     justify-content: space-between;
     //transform: translate(-2cm, 0);
+}
+
+.v-index__origin {
+  position: absolute;
+  font-size: 8.5pt;
+  line-height: 9.5pt;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #37007d;
+  left: 1.25cm;
+  bottom: 3.6cm;
 }
 
 .v-index__menu__bg {
