@@ -9,7 +9,7 @@ export function getDateRef(getNextWeek: boolean) {
     const friday = new Date(date)
     friday.setDate(date.getDate() + diffToFriday)
 
-    const monday = new Date()
+    const monday = new Date(friday)
     monday.setDate(friday.getDate() - 4)
 
     return { monday, friday };
