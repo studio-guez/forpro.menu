@@ -49,18 +49,26 @@
                   <br>{{ xlsxContent[15][1] }}
                   <br>&nbsp;
                 </AppTextContentFoodLab>
+
+
+                <AppTextContentFoodLab color="#37007d">
+                  {{ xlsxContent[16][1] }}
+                  <br>{{ xlsxContent[17][1] }}
+                  <br>{{ xlsxContent[18][1] }}
+                  <br>&nbsp;
+                </AppTextContentFoodLab>
             </div>
             <div class="v-index__origin"
                  v-if="xlsxContent"
             >
-              <div>{{xlsxContent[18][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[19][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[20][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[21][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[22][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[23][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[24][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[28][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[27][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[26][1] || '&nbsp;'}}</div>
               <div>{{xlsxContent[25][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[24][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[23][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[22][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[21][1] || '&nbsp;'}}</div>
             </div>
             <div class="v-index__menu__bg">
                 <AppSvgFoodLab/>
@@ -93,6 +101,7 @@ onMounted(() => {
 
     const dateRef: Date = getDateRef(!!useRouter().currentRoute.value.query.next).monday
 
+    // fetch('foodlab-format_v250825.xlsx')
     fetch('https://hosting.for-pro.ch/foodlab.xlsx')
         .then(response => response.blob())
         .then(blob => readXlsxFile(blob, {
@@ -147,9 +156,9 @@ onBeforeUnmount(() => {
 
 .v-index__menu__text {
     position: absolute;
-    top: 10.175cm;
+    top: calc( 722.8cm / 100);
     left: 7.65cm;
-    height: 141.1mm;
+    height: calc( 1610.8mm / 10);
     width: 12cm;
     display: flex;
     flex-direction: column;
