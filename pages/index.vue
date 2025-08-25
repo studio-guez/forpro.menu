@@ -15,31 +15,23 @@
                   {{ xlsxContent[1][1] }}
                   <br>{{ xlsxContent[2][1] }}
                   <br>{{ xlsxContent[3][1] }}
-                  <br>&nbsp;
+                  <br>{{ xlsxContent[4][1] }}
                 </AppTextContentFoodLab>
 
 
                 <AppTextContentFoodLab color="#37007d">
-                  {{ xlsxContent[4][1] }}
-                  <br>{{ xlsxContent[5][1] }}
+                  {{ xlsxContent[5][1] }}
                   <br>{{ xlsxContent[6][1] }}
-                  <br>&nbsp;
-                </AppTextContentFoodLab>
-
-
-                <AppTextContentFoodLab color="#37007d">
-                  {{ xlsxContent[7][1] }}
+                  <br>{{ xlsxContent[7][1] }}
                   <br>{{ xlsxContent[8][1] }}
-                  <br>{{ xlsxContent[9][1] }}
-                  <br>&nbsp;
                 </AppTextContentFoodLab>
 
 
                 <AppTextContentFoodLab color="#37007d">
-                  {{ xlsxContent[10][1] }}
+                  {{ xlsxContent[9][1] }}
+                  <br>{{ xlsxContent[10][1] }}
                   <br>{{ xlsxContent[11][1] }}
                   <br>{{ xlsxContent[12][1] }}
-                  <br>&nbsp;
                 </AppTextContentFoodLab>
 
 
@@ -47,20 +39,28 @@
                   {{ xlsxContent[13][1] }}
                   <br>{{ xlsxContent[14][1] }}
                   <br>{{ xlsxContent[15][1] }}
-                  <br>&nbsp;
+                  <br>{{ xlsxContent[16][1] }}
+                </AppTextContentFoodLab>
+
+
+                <AppTextContentFoodLab color="#37007d">
+                  <br>{{ xlsxContent[17][1] }}
+                  <br>{{ xlsxContent[18][1] }}
+                  <br>{{ xlsxContent[19][1] }}
+                  <br>{{ xlsxContent[20][1] }}
                 </AppTextContentFoodLab>
             </div>
             <div class="v-index__origin"
                  v-if="xlsxContent"
             >
-              <div>{{xlsxContent[18][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[19][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[20][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[21][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[22][1] || '&nbsp;'}}</div>
               <div>{{xlsxContent[23][1] || '&nbsp;'}}</div>
               <div>{{xlsxContent[24][1] || '&nbsp;'}}</div>
               <div>{{xlsxContent[25][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[26][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[27][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[28][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[29][1] || '&nbsp;'}}</div>
+              <div>{{xlsxContent[30][1] || '&nbsp;'}}</div>
             </div>
             <div class="v-index__menu__bg">
                 <AppSvgFoodLab/>
@@ -93,16 +93,17 @@ onMounted(() => {
 
     const dateRef: Date = getDateRef(!!useRouter().currentRoute.value.query.next).monday
 
-    fetch('https://hosting.for-pro.ch/foodlab.xlsx')
+    // fetch('https://hosting.for-pro.ch/foodlab.xlsx')
+    fetch('/foodlab-format_v250825.xlsx')
         .then(response => response.blob())
         .then(blob => readXlsxFile(blob, {
             sheet: isEvenWeek(dateRef) ? 2 : 1
         }))
         .then((rows) => {
 
-            console.log(xlsxContent)
-
             xlsxContent.value = rows
+
+            console.log(xlsxContent.value)
         }).catch(() => {
           xlsxContent.value = null
         })
