@@ -107,9 +107,7 @@ onMounted(() => {
         5_000
     )
 
-    window.setInterval(() => {
-        showSecondImage.value = !showSecondImage.value
-    }, 5_000)
+    // setAutoToggleBetweenImages()
 })
 
 function setAutoToggleBetweenImages() {
