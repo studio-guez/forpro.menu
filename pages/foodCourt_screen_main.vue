@@ -112,6 +112,12 @@ onMounted(() => {
     }, 5_000)
 })
 
+function setAutoToggleBetweenImages() {
+    window.setInterval(() => {
+        showSecondImage.value = !showSecondImage.value
+    }, 5_000)
+}
+
 function getXLSLContent() {
     fetch('https://hosting.for-pro.ch/foodcourt.xlsx')
         .then(response => response.blob())
