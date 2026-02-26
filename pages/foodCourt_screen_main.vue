@@ -107,7 +107,7 @@ onMounted(() => {
         5_000
     )
 
-    // setAutoToggleBetweenImages()
+    setAutoToggleBetweenImages()
 })
 
 function setAutoToggleBetweenImages() {
