@@ -74,8 +74,10 @@ import {scaleTransform} from "~/utils/scaleTransform";
 import {useRouter} from "#app";
 import {isEvenWeek} from "~/utils/isEvenWeek";
 import {getDateRef} from "~/utils/getDateRef";
+import {getFoodCourtData, type IMenuData__foodCourt} from "~/composables/foodCourtData";
 
 const xlsxContent: Ref<Row[] | null> = ref(null)
+const foodCourtData = ref<null | IMenuData__foodCourt>(null)
 
 const elementToScale: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
 const elementForSize: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
@@ -83,6 +85,14 @@ const elementForSize: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
 onMounted(() => {
 
     const dateRef: Date = getDateRef(!!useRouter().currentRoute.value.query.next).monday
+
+    getFoodCourtData().then(data => {
+      foodCourtData.value = data
+    })
+
+
+
+
 
     fetch('https://hosting.for-pro.ch/foodcourt.xlsx')
         .then(response => response.blob())
