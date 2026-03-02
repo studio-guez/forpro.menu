@@ -13,8 +13,8 @@
         <div class="v-screen-stations__box__item__foodMain" >{{todayMenu[screenIndex]?.foodMain}}</div>
         <div class="v-screen-stations__box__item__foodDesc" >{{todayMenu[screenIndex]?.foodDesc}}</div>
         <div class="v-screen-stations__box__item__price" >
-          <div>{{todayMenu[screenIndex]?.price1}}</div>
-          <div>{{todayMenu[screenIndex]?.price2}}</div>
+          <div>{{ formatPrice(todayMenu[screenIndex]?.price1) }}</div>
+          <div>{{ formatPrice(todayMenu[screenIndex]?.price2) }}</div>
         </div>
       </div>
 
@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 import {computed, onMounted, ref, type Ref} from 'vue'
-import {isEvenWeek} from "~/utils/isEvenWeek";
+import {formatPrice} from "~/utils/formatPrice";
 import {useRouter} from "#app";
 
 import {
