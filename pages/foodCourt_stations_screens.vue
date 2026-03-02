@@ -74,12 +74,21 @@ const imgMenuURL = [
 ]
 
 const todayMenu = computed(() => {
-    // const order = [0, 1, 2, 3]
-    const order = [2, 0, 1, 3]
+    const order = [0, 1, 2, 3]
+    // const order = [2, 0, 1, 3]
     // const order = [1, 2, 0, 3]
 
   const arrayToReturn = Array.from({length: 4}, (_, i) => {
     if( currentWeekMenuData.value === null ) return null
+
+    const index = i + 1
+
+    const imageIndex = (() => {
+      if (index === 1)  return 2
+      if (index === 2) return 3
+      if (index === 3) return 1
+      return 0
+    })()
 
     return {
       name:     currentWeekMenuData.value[`station${i + 1}_name` as keyof IMenuData__foodCourt__weekMenu],
@@ -87,7 +96,7 @@ const todayMenu = computed(() => {
       foodDesc: currentWeekMenuData.value[`jour${currentDayXLSXIndex}_station${i + 1}_description` as keyof IMenuData__foodCourt__weekMenu],
       price1:   currentWeekMenuData.value[`jour${currentDayXLSXIndex}_station${i + 1}_prix_public` as keyof IMenuData__foodCourt__weekMenu],
       price2:   currentWeekMenuData.value[`jour${currentDayXLSXIndex}_station${i + 1}_prix_apprenti` as keyof IMenuData__foodCourt__weekMenu],
-      img:      imgMenuURL[i],
+      img:      imgMenuURL[imageIndex],
     }
   })
 
