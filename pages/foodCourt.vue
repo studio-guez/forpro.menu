@@ -10,46 +10,46 @@
                 <AppHeader/>
             </div>
             <div class="v-food-court__menu__text"
-                 v-if="xlsxContent"
+                 v-if="foodCourtData"
             >
                 <AppTextContent
                     day="Lundi"
-                    :cuisine_du_monde="[xlsxContent[1][2], xlsxContent[1][3]]"
-                    :fourchette_verte="[xlsxContent[2][2], xlsxContent[2][3]]"
-                    :burger=          "[xlsxContent[3][2], xlsxContent[3][3]]"
-                    :street_food=     "[xlsxContent[4][2], xlsxContent[4][3]]"
+                    :cuisine_du_monde="[foodCourtData.jour1_station4_menu]"
+                    :fourchette_verte="[foodCourtData.jour1_station3_menu]"
+                    :burger=          "[foodCourtData.jour1_station1_menu]"
+                    :street_food=     "[foodCourtData.jour1_station2_menu]"
                     color="black"
                 />
                 <AppTextContent
                     day="Mardi"
-                    :cuisine_du_monde="[xlsxContent[5][2], xlsxContent[5][3]]"
-                    :fourchette_verte="[xlsxContent[6][2], xlsxContent[6][3]]"
-                    :burger=          "[xlsxContent[7][2], xlsxContent[7][3]]"
-                    :street_food=     "[xlsxContent[8][2], xlsxContent[8][3]]"
+                    :cuisine_du_monde="[foodCourtData.jour2_station4_menu]"
+                    :fourchette_verte="[foodCourtData.jour2_station3_menu]"
+                    :burger=          "[foodCourtData.jour2_station1_menu]"
+                    :street_food=     "[foodCourtData.jour2_station2_menu]"
                     color="black"
                 />
                 <AppTextContent
                     day="Mercredi"
-                    :cuisine_du_monde="[xlsxContent[9][2], xlsxContent[9][3]]"
-                    :fourchette_verte="[xlsxContent[10][2], xlsxContent[10][3]]"
-                    :burger=          "[xlsxContent[11][2], xlsxContent[11][3]]"
-                    :street_food=     "[xlsxContent[12][2], xlsxContent[12][3]]"
+                    :cuisine_du_monde="[foodCourtData.jour3_station4_menu]"
+                    :fourchette_verte="[foodCourtData.jour3_station3_menu]"
+                    :burger=          "[foodCourtData.jour3_station1_menu]"
+                    :street_food=     "[foodCourtData.jour3_station2_menu]"
                     color="black"
                 />
                 <AppTextContent
                     day="Jeudi"
-                    :cuisine_du_monde="[xlsxContent[13][2], xlsxContent[13][3]]"
-                    :fourchette_verte="[xlsxContent[14][2], xlsxContent[14][3]]"
-                    :burger=          "[xlsxContent[15][2], xlsxContent[15][3]]"
-                    :street_food=     "[xlsxContent[16][2], xlsxContent[16][3]]"
+                    :cuisine_du_monde="[foodCourtData.jour4_station4_menu]"
+                    :fourchette_verte="[foodCourtData.jour4_station3_menu]"
+                    :burger=          "[foodCourtData.jour4_station1_menu]"
+                    :street_food=     "[foodCourtData.jour4_station2_menu]"
                     color="black"
                 />
                 <AppTextContent
                     day="Vendredi"
-                    :cuisine_du_monde="[xlsxContent[17][2], xlsxContent[17][3]]"
-                    :fourchette_verte="[xlsxContent[18][2], xlsxContent[18][3]]"
-                    :burger=          "[xlsxContent[19][2], xlsxContent[19][3]]"
-                    :street_food=     "[xlsxContent[20][2], xlsxContent[20][3]]"
+                    :cuisine_du_monde="[foodCourtData.jour5_station4_menu]"
+                    :fourchette_verte="[foodCourtData.jour5_station3_menu]"
+                    :burger=          "[foodCourtData.jour5_station1_menu]"
+                    :street_food=     "[foodCourtData.jour5_station2_menu]"
                     color="black"
                 />
             </div>
@@ -66,43 +66,25 @@
 
 <script setup lang="ts">
 import {nextTick, onBeforeUnmount, onMounted, ref, type Ref, type UnwrapRef} from 'vue'
-import readXlsxFile, {type Row} from "read-excel-file";
 import AppHeader from "../components/AppHeader.vue";
 import AppTextContent from "../components/AppTextContent.vue";
 import AppSvgFoodCourt from "../components/AppSvgFoodCourt.vue";
 import {scaleTransform} from "~/utils/scaleTransform";
-import {useRouter} from "#app";
-import {isEvenWeek} from "~/utils/isEvenWeek";
-import {getDateRef} from "~/utils/getDateRef";
-import {getFoodCourtData, type IMenuData__foodCourt} from "~/composables/foodCourtData";
+import {
+  foodCourt_GetCurrentWeekMenu,
+  getFoodCourtData,
+  type IMenuData__foodCourt__weekMenu
+} from "~/composables/foodCourtData";
 
-const xlsxContent: Ref<Row[] | null> = ref(null)
-const foodCourtData = ref<null | IMenuData__foodCourt>(null)
+const foodCourtData = ref<null | IMenuData__foodCourt__weekMenu>(null)
 
 const elementToScale: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
 const elementForSize: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
 
 onMounted(() => {
 
-    const dateRef: Date = getDateRef(!!useRouter().currentRoute.value.query.next).monday
-
     getFoodCourtData().then(data => {
-      foodCourtData.value = data
-    })
-
-
-
-
-
-    fetch('https://hosting.for-pro.ch/foodcourt.xlsx')
-        .then(response => response.blob())
-        .then(blob => readXlsxFile(blob, {
-            sheet: isEvenWeek(dateRef) ? 1 : 2
-        }))
-        .then((rows) => {
-            xlsxContent.value = rows
-        }).catch(() => {
-        xlsxContent.value = null
+      foodCourtData.value = foodCourt_GetCurrentWeekMenu(data)
     })
 
     nextTick(() => {

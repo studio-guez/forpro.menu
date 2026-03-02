@@ -35,10 +35,11 @@ const props = defineProps<{
 }
 
 .v-app-text-content-foodlab__content {
-    font-size: 12pt;
+    font-size: 10.5pt;
     line-height: 15pt;
     font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
+    height: 60pt;
 }
 </style>

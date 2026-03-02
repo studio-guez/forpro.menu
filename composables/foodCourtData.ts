@@ -1,92 +1,104 @@
 export type IMenuData__foodCourt = IMenuData__foodCourt__weekMenu[]
 
 export interface IMenuData__foodCourt__weekMenu {
-  id: "836281f3-564a-4f4b-8b12-db777a6852e5",
-  date: "2026-03-02 00:00:00",
-  station1_name: "Burger",
-  station2_name: "Pasta et risotto",
-  station3_name: "Fourchette Verte",
-  station4_name: "Cuisine du monde",
-  jour1_station1_menu: "Raclette roesti burger, pommes frites",
-  jour1_station1_description: "",
-  jour1_station1_prix_public: 19,
-  jour1_station1_prix_apprenti: "",
-  jour1_station2_menu: "A la crème de courge, ail confit et roquette",
-  jour1_station2_description: "",
-  jour1_station2_prix_public: 13,
-  jour1_station2_prix_apprenti: "",
-  jour1_station3_menu: "Friands aux champignons, salade croquante",
-  jour1_station3_description: "",
-  jour1_station3_prix_public: 10,
-  jour1_station3_prix_apprenti: 6.4,
-  jour1_station4_menu: "Brochette de poulet satay, riz sauté balinais",
-  jour1_station4_description: "",
-  jour1_station4_prix_public: 16,
-  jour1_station4_prix_apprenti: "",
-  jour2_station1_menu: "Cheesburger, pommes frites",
-  jour2_station1_description: "",
-  jour2_station1_prix_public: 19,
-  jour2_station1_prix_apprenti: "",
-  jour2_station2_menu: "All' arrabbiata",
-  jour2_station2_description: "",
-  jour2_station2_prix_public: 13,
-  jour2_station2_prix_apprenti: "",
-  jour2_station3_menu: "Émincé de porc au poivre vert, pommes duchesse",
-  jour2_station3_description: "",
-  jour2_station3_prix_public: 10,
-  jour2_station3_prix_apprenti: 6.4,
-  jour2_station4_menu: "Bobun au boeuf",
-  jour2_station4_description: "",
-  jour2_station4_prix_public: 16,
-  jour2_station4_prix_apprenti: "",
-  jour3_station1_menu: "Pulled chicken burger, pommes frites",
-  jour3_station1_description: "",
-  jour3_station1_prix_public: 19,
-  jour3_station1_prix_apprenti: "",
-  jour3_station2_menu: "Gratin de cornettes du chalet",
-  jour3_station2_description: "",
-  jour3_station2_prix_public: 13,
-  jour3_station2_prix_apprenti: "",
-  jour3_station3_menu: "Pizza margherita, roquette et crudités",
-  jour3_station3_description: "",
-  jour3_station3_prix_public: 10,
-  jour3_station3_prix_apprenti: 6.4,
-  jour3_station4_menu: "Curry rouge au porc, riz citronelle",
-  jour3_station4_description: "",
-  jour3_station4_prix_public: 16,
-  jour3_station4_prix_apprenti: "",
-  jour4_station1_menu: "Smash burger, pommes frites",
-  jour4_station1_description: "",
-  jour4_station1_prix_public: 19,
-  jour4_station1_prix_apprenti: "",
-  jour4_station2_menu: "À la crème de champignons",
-  jour4_station2_description: "",
-  jour4_station2_prix_public: 13,
-  jour4_station2_prix_apprenti: "",
-  jour4_station3_menu: "Boulettes de bœuf à la napolitaine, nouilles, gratin de chou-fleur",
-  jour4_station3_description: "",
-  jour4_station3_prix_public: 10,
-  jour4_station3_prix_apprenti: 6.4,
-  jour4_station4_menu: "Tenders de poulet BBQ, smash potatoes, coleslaw",
-  jour4_station4_description: "",
-  jour4_station4_prix_public: 16,
-  jour4_station4_prix_apprenti: "",
-  jour5_station1_menu: "Cheese and bacon burger, pommes frites",
-  jour5_station1_description: "",
-  jour5_station1_prix_public: 19,
-  jour5_station1_prix_apprenti: "",
-  jour5_station2_menu: "Al ragù",
-  jour5_station2_description: "",
-  jour5_station2_prix_public: 13,
-  jour5_station2_prix_apprenti: "",
-  jour5_station3_menu: "Tortilla à la courge et fêta",
-  jour5_station3_description: "",
-  jour5_station3_prix_public: 10,
-  jour5_station3_prix_apprenti: 6.4,
-  jour5_station4_menu: "Pad thai crevettes",
-  jour5_station4_description: "",
-  jour5_station4_prix_public: 16,
-  jour5_station4_prix_apprenti: ""
+  jour1_station1_prix_public: number,
+  jour1_station2_prix_public: number
+  jour1_station3_prix_public: number
+  jour1_station3_prix_apprenti: number
+  jour1_station4_prix_public: number
+
+  jour2_station1_prix_public: number
+  jour2_station2_prix_public: number
+  jour2_station3_prix_public: number
+  jour2_station3_prix_apprenti: number
+  jour2_station4_prix_public: number
+
+  jour3_station1_prix_public: number
+  jour3_station2_prix_public: number
+  jour3_station3_prix_public: number
+  jour3_station3_prix_apprenti: number
+  jour3_station4_prix_public: number
+
+  jour4_station1_prix_public: number
+  jour4_station2_prix_public: number
+  jour4_station3_prix_public: number
+  jour4_station3_prix_apprenti: number
+  jour4_station4_prix_public: number
+
+  jour5_station1_prix_public: number
+  jour5_station2_prix_public: number
+  jour5_station3_prix_public: number
+  jour5_station3_prix_apprenti: number
+  jour5_station4_prix_public: number
+
+  id: string
+
+  date: string
+
+  station1_name: string
+  station2_name: string
+  station3_name: string
+  station4_name: string
+
+  jour1_station1_menu: string
+  jour1_station1_description: string
+  jour1_station1_prix_apprenti: string
+  jour1_station2_menu: string
+  jour1_station2_description: string
+  jour1_station2_prix_apprenti: string
+  jour1_station3_menu: string
+  jour1_station3_description: string
+  jour1_station4_menu: string
+  jour1_station4_description: string
+  jour1_station4_prix_apprenti: string
+
+  jour2_station1_menu: string
+  jour2_station1_description: string
+  jour2_station1_prix_apprenti: string
+  jour2_station2_menu: string
+  jour2_station2_description: string
+  jour2_station2_prix_apprenti: string
+  jour2_station3_menu: string
+  jour2_station3_description: string
+  jour2_station4_menu: string
+  jour2_station4_description: string
+  jour2_station4_prix_apprenti: string
+
+  jour3_station1_menu: string
+  jour3_station1_description: string
+  jour3_station1_prix_apprenti: string
+  jour3_station2_menu: string
+  jour3_station2_description: string
+  jour3_station2_prix_apprenti: string
+  jour3_station3_menu: string
+  jour3_station3_description: string
+  jour3_station4_menu: string
+  jour3_station4_description: string
+  jour3_station4_prix_apprenti: string
+
+  jour4_station1_menu: string
+  jour4_station1_description: string
+  jour4_station1_prix_apprenti: string
+  jour4_station2_menu: string
+  jour4_station2_description: string
+  jour4_station2_prix_apprenti: string
+  jour4_station3_menu: string
+  jour4_station3_description: string
+  jour4_station4_menu: string
+  jour4_station4_description: string
+  jour4_station4_prix_apprenti: string
+
+  jour5_station1_menu: string
+  jour5_station1_description: string
+  jour5_station1_prix_apprenti: string
+  jour5_station2_menu: string
+  jour5_station2_description: string
+  jour5_station2_prix_apprenti: string
+  jour5_station3_menu: string
+  jour5_station3_description: string
+  jour5_station4_menu: string
+  jour5_station4_description: string
+  jour5_station4_prix_apprenti: string
 }
 
 export async function getFoodCourtData(): Promise<IMenuData__foodCourt> {
@@ -97,9 +109,16 @@ export async function getFoodCourtData(): Promise<IMenuData__foodCourt> {
   return data.json()
 }
 
-export function foodCourt_GetCurrentWeekMenu(menus: IMenuData__foodCourt): IMenuData__foodCourt__weekMenu {
+export function foodCourt_GetCurrentWeekMenu(menus: IMenuData__foodCourt): IMenuData__foodCourt__weekMenu | null {
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
 
+  const currentWeekMenu = menus
+    .filter(menu => new Date(menu.date) <= today)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    [0] || null
 
+  console.info(currentWeekMenu)
 
-  return
+  return currentWeekMenu
 }

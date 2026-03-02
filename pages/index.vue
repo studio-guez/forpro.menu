@@ -9,66 +9,44 @@
             <div class="v-index__menu__header">
                 <AppHeader/>
             </div>
-            <div class="v-index__menu__text" v-if="xlsxContent">
+            <div class="v-index__menu__text" v-if="foodLabData">
 
                 <AppTextContentFoodLab color="#37007d">
-                  {{ xlsxContent[1][1] }}
-                  <br>{{ xlsxContent[2][1] }}
-                  <br>{{ xlsxContent[3][1] }}
-                  <br>&nbsp;
+                  <div v-html="foodLabData.jour1_menu"/>
                 </AppTextContentFoodLab>
 
 
                 <AppTextContentFoodLab color="#37007d">
-                  {{ xlsxContent[4][1] }}
-                  <br>{{ xlsxContent[5][1] }}
-                  <br>{{ xlsxContent[6][1] }}
-                  <br>&nbsp;
+                  <div v-html="foodLabData.jour2_menu"/>
                 </AppTextContentFoodLab>
 
 
                 <AppTextContentFoodLab color="#37007d">
-                  {{ xlsxContent[7][1] }}
-                  <br>{{ xlsxContent[8][1] }}
-                  <br>{{ xlsxContent[9][1] }}
-                  <br>&nbsp;
+                  <div v-html="foodLabData.jour3_menu"/>
                 </AppTextContentFoodLab>
 
 
                 <AppTextContentFoodLab color="#37007d">
-                  {{ xlsxContent[10][1] }}
-                  <br>{{ xlsxContent[11][1] }}
-                  <br>{{ xlsxContent[12][1] }}
-                  <br>&nbsp;
+                  <div v-html="foodLabData.jour4_menu"/>
                 </AppTextContentFoodLab>
 
 
                 <AppTextContentFoodLab color="#37007d">
-                  {{ xlsxContent[13][1] }}
-                  <br>{{ xlsxContent[14][1] }}
-                  <br>{{ xlsxContent[15][1] }}
-                  <br>&nbsp;
+                  <div v-html="foodLabData.jour5_menu"/>
                 </AppTextContentFoodLab>
 
 
                 <AppTextContentFoodLab color="#37007d">
-                  {{ xlsxContent[16][1] }}
-                  <br>{{ xlsxContent[17][1] }}
-                  <br>{{ xlsxContent[18][1] }}
-                  <br>&nbsp;
+                  <div v-html="foodLabData.jour6_menu"/>
                 </AppTextContentFoodLab>
             </div>
             <div class="v-index__origin"
-                 v-if="xlsxContent"
+                 v-if="foodLabData"
             >
-              <div>{{xlsxContent[28][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[27][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[26][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[25][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[24][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[23][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[22][1] || '&nbsp;'}}</div>
-              <div>{{xlsxContent[21][1] || '&nbsp;'}}</div>
+              <div>Boeuf : Suisse</div>
+              <div>Dorade : France - Loire Atlantique</div>
+              <div>Poulet : Suisse</div>
+              <div>Porc : Suisse</div>
             </div>
             <div class="v-index__menu__bg">
                 <AppSvgFoodLab/>
@@ -83,38 +61,22 @@
 
 <script setup lang="ts">
 import {nextTick, onBeforeUnmount, onMounted, ref, type Ref, type UnwrapRef} from 'vue'
-import readXlsxFile, {type Row} from "read-excel-file";
 import AppHeader from "../components/AppHeader.vue";
 import AppTextContentFoodLab from "../components/AppTextContentFoodLab.vue";
 import AppSvgFoodLab from "../components/AppSvgFoodLab.vue";
 import {scaleTransform} from "~/utils/scaleTransform";
-import {useRouter} from "#app";
-import {isEvenWeek} from "~/utils/isEvenWeek";
-import {getDateRef} from "~/utils/getDateRef";
+import {foodLab_GetCurrentWeekMenu, getfoodLabData, type IMenuData__foodLab__weekMenu} from "~/composables/foodLabData";
 
-const xlsxContent: Ref<Row[] | null> = ref(null)
+const foodLabData = ref<null | IMenuData__foodLab__weekMenu>(null)
 
 const elementToScale: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
 const elementForSize: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
 
 onMounted(() => {
 
-    const dateRef: Date = getDateRef(!!useRouter().currentRoute.value.query.next).monday
-
-    // fetch('foodlab-format_v250825.xlsx')
-    fetch('https://hosting.for-pro.ch/foodlab.xlsx')
-        .then(response => response.blob())
-        .then(blob => readXlsxFile(blob, {
-            sheet: isEvenWeek(dateRef) ? 2 : 1
-        }))
-        .then((rows) => {
-
-            console.log(xlsxContent)
-
-            xlsxContent.value = rows
-        }).catch(() => {
-          xlsxContent.value = null
-        })
+    getfoodLabData().then(data => {
+      foodLabData.value = foodLab_GetCurrentWeekMenu(data)
+    })
 
     nextTick(() => {
         setPageScale()

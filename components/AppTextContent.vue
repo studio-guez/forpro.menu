@@ -43,7 +43,7 @@ const props = defineProps<{
 }
 
 .v-app-text-content__content {
-    font-size: 12pt;
+    font-size: 10.5pt;
     line-height: 15pt;
     font-weight: 700;
     white-space: nowrap;
