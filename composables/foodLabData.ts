@@ -18,7 +18,7 @@ export interface IMenuData__foodLab__weekMenu {
 }
 
 export async function getfoodLabData(): Promise<IMenuData__foodLab> {
-  const data = await fetch('http://localhost:1234/foodlab', {
+  const data = await fetch('https://api.for-pro.ch/foodlab', {
     method: 'GET',
   })
 
