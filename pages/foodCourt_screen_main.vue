@@ -45,15 +45,18 @@
 
 <script setup lang="ts">
 import {computed, onMounted, ref, type Ref} from 'vue'
-import readXlsxFile, {type Row} from "read-excel-file";
-import {isEvenWeek} from "~/utils/isEvenWeek";
 import {useRouter} from "#app";
+import {
+  foodCourt_GetCurrentWeekMenu,
+  getFoodCourtData,
+  type IMenuData__foodCourt__weekMenu
+} from "~/composables/foodCourtData";
 
 const showSecondImage = ref(false)
 
-const xlsxContent: Ref<Row[] | null> = ref(null)
+const currentWeekMenuData: Ref<IMenuData__foodCourt__weekMenu | null> = ref(null)
 
-const currentDayXLSXIndex = new Date().getDay() - 1
+const currentDayXLSXIndex = new Date().getDay()
 
 const dateRef = new Date()
 
@@ -81,13 +84,14 @@ const todayMenu = computed(() => {
     // const order = [1, 2, 0, 3]
 
     const arrayToReturn = Array.from({length: 4}, (_, i) => {
-        if( xlsxContent.value === null ) return null
+        if( currentWeekMenuData.value === null ) return null
+
         return {
-            name:     xlsxContent.value[currentDayXLSXIndex * 4 + i + 1][1],
-            foodMain: xlsxContent.value[currentDayXLSXIndex * 4 + i + 1][2],
-            foodDesc: xlsxContent.value[currentDayXLSXIndex * 4 + i + 1][3],
-            price1: xlsxContent.value[currentDayXLSXIndex * 4 + i + 1][4],
-            price2: xlsxContent.value[currentDayXLSXIndex * 4 + i + 1][5],
+            name:     currentWeekMenuData.value[`station${i + 1}_name` as keyof IMenuData__foodCourt__weekMenu],
+            foodMain: currentWeekMenuData.value[`jour${currentDayXLSXIndex}_station${i + 1}_menu` as keyof IMenuData__foodCourt__weekMenu],
+            foodDesc: currentWeekMenuData.value[`jour${currentDayXLSXIndex}_station${i + 1}_description` as keyof IMenuData__foodCourt__weekMenu],
+            price1:   currentWeekMenuData.value[`jour${currentDayXLSXIndex}_station${i + 1}_prix_public` as keyof IMenuData__foodCourt__weekMenu],
+            price2:   currentWeekMenuData.value[`jour${currentDayXLSXIndex}_station${i + 1}_prix_apprenti` as keyof IMenuData__foodCourt__weekMenu],
             img:      imgMenuURL[i],
         }
     })
@@ -100,9 +104,9 @@ const todayMenu = computed(() => {
 })
 
 onMounted(() => {
-    getXLSLContent()
+    setFoodCourtData()
     window.setInterval(() => {
-            getXLSLContent()
+            setFoodCourtData()
         },
         5_000
     )
@@ -116,17 +120,12 @@ function setAutoToggleBetweenImages() {
     }, 5_000)
 }
 
-function getXLSLContent() {
-    fetch('https://hosting.for-pro.ch/foodcourt.xlsx')
-        .then(response => response.blob())
-        .then(blob => readXlsxFile(blob, {
-            sheet: isEvenWeek(dateRef) ? 1 : 2
-        }))
-        .then((rows) => {
-            xlsxContent.value = rows
-        }).catch(() => {
-        xlsxContent.value = null
+function setFoodCourtData() {
+
+    getFoodCourtData().then((data) => {
+      currentWeekMenuData.value = foodCourt_GetCurrentWeekMenu(data)
     })
+
 }
 </script>
 
@@ -215,7 +214,7 @@ function getXLSLContent() {
 }
 
 .v-screen-home__box__item__foodMain {
-  font-size: 4vw;
+  font-size: 3vw;
   line-height: 1em;
   font-weight: 900;
   text-align: center;
