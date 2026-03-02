@@ -41,12 +41,9 @@
                 </AppTextContentFoodLab>
             </div>
             <div class="v-index__origin"
-                 v-if="foodLabData"
+                 v-if="foodLabData_footer"
             >
-              <div>Boeuf : Suisse</div>
-              <div>Dorade : France - Loire Atlantique</div>
-              <div>Poulet : Suisse</div>
-              <div>Porc : Suisse</div>
+              <div v-html="foodLabData_footer"/>
             </div>
             <div class="v-index__menu__bg">
                 <AppSvgFoodLab/>
@@ -68,6 +65,7 @@ import {scaleTransform} from "~/utils/scaleTransform";
 import {foodLab_GetCurrentWeekMenu, getfoodLabData, type IMenuData__foodLab__weekMenu} from "~/composables/foodLabData";
 
 const foodLabData = ref<null | IMenuData__foodLab__weekMenu>(null)
+const foodLabData_footer = ref<null | string>(null)
 
 const elementToScale: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
 const elementForSize: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
@@ -76,6 +74,7 @@ onMounted(() => {
 
     getfoodLabData().then(data => {
       foodLabData.value = foodLab_GetCurrentWeekMenu(data)
+      foodLabData_footer.value = data.footer
     })
 
     nextTick(() => {
@@ -130,14 +129,23 @@ onBeforeUnmount(() => {
 
 .v-index__origin {
   position: absolute;
-  font-size: 8.5pt;
-  line-height: 9.5pt;
-  font-weight: 500;
-  white-space: nowrap;
+  font-size: 8.5pt !important;
+  line-height: 9.5pt !important;
+  font-weight: 500 !important;
+  color: #37007d !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
   overflow: hidden;
-  color: #37007d;
   left: 1.25cm;
   bottom: 3.6cm;
+
+  * {
+    font-size: 8.5pt !important;
+    line-height: 9.5pt !important;
+    font-weight: 500 !important;
+    color: #37007d !important;
+    margin: 0 !important;
+  }
 }
 
 .v-index__menu__bg {
