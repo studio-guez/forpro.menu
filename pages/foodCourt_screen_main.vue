@@ -27,8 +27,8 @@
          <div class="v-screen-home__box__item__foodMain" >{{menu?.foodMain}}</div>
          <div class="v-screen-home__box__item__foodDesc" >{{menu?.foodDesc}}</div>
          <div class="v-screen-home__box__item__price" >
-           <div>{{menu?.price1}}</div>
-           <div>{{menu?.price2}}</div>
+           <div>{{formatPrice(menu?.price1)}}</div>
+           <div>{{formatPrice(menu?.price2)}}</div>
          </div>
        </div>
 
@@ -53,6 +53,7 @@ import {
   type IMenuData__foodCourt__weekMenu
 } from "~/composables/foodCourtData";
 import {getMainScreenData} from "~/composables/mainScreenData";
+import {formatPrice} from "~/utils/formatPrice";
 
 const imageListe = ref<{filename: string, url: string}[]>()
 const currentVisibleIndex = ref(0)
