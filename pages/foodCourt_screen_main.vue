@@ -1,12 +1,11 @@
 <template>
-  <section class="v-screen-home"
-           :class="{
-              'show-second-image': showSecondImage
-           }"
-  >
-    <div class="v-screen-home__menu-content">
+  <section class="v-screen-home">
+    <div class="v-screen-home__menu-content"
+         v-for="image of imageListe"
+    >
       <img class="v-screen-home__menu-content__img"
-           src="/ouverture_terrasse.png" alt="ouverture de la terrasse">
+           :src="`https://api.for-pro.ch${image.url}`"
+      >
     </div>
     <div class="v-screen-home__menu-content"
     >
@@ -51,8 +50,9 @@ import {
   getFoodCourtData,
   type IMenuData__foodCourt__weekMenu
 } from "~/composables/foodCourtData";
+import {getMainScreenData} from "~/composables/mainScreenData";
 
-const showSecondImage = ref(false)
+const imageListe = ref<{filename: string, url: string}[]>()
 
 const currentWeekMenuData: Ref<IMenuData__foodCourt__weekMenu | null> = ref(null)
 
@@ -125,7 +125,7 @@ onMounted(() => {
 
 function setAutoToggleBetweenImages() {
     window.setInterval(() => {
-        showSecondImage.value = !showSecondImage.value
+        // ici
     }, 5_000)
 }
 
@@ -135,6 +135,8 @@ function setFoodCourtData() {
       currentWeekMenuData.value = foodCourt_GetCurrentWeekMenu(data)
     })
 
+    getMainScreenData().then(data => imageListe.value = data)
+
 }
 </script>
 
@@ -143,24 +145,6 @@ function setFoodCourtData() {
 
 
 <style lang="scss" scoped >
-.v-screen-home {
-  .v-screen-home__menu-content:nth-child(1) {
-    display: none !important;
-  }
-  .v-screen-home__menu-content:nth-child(2) {
-    display: block !important;
-  }
-
-  &.show-second-image {
-    .v-screen-home__menu-content:nth-child(1) {
-      display: block !important;
-    }
-    .v-screen-home__menu-content:nth-child(2) {
-      display: none !important;
-    }
-  }
-}
-
 .v-screen-home__menu-content {
   position: fixed;
   width: 100%;
