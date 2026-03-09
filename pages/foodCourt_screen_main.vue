@@ -1,13 +1,15 @@
 <template>
   <section class="v-screen-home">
     <div class="v-screen-home__menu-content"
-         v-for="image of imageListe"
+         v-for="(image, index) of imageListe"
+         :style="{ display: currentVisibleIndex === index ? undefined : 'none' }"
     >
       <img class="v-screen-home__menu-content__img"
            :src="`https://api.for-pro.ch${image.url}`"
       >
     </div>
     <div class="v-screen-home__menu-content"
+         :style="{ display: currentVisibleIndex === (imageListe?.length ?? 0) ? undefined : 'none' }"
     >
       <div class="v-screen-home__title">
        {{stringFormatedDate}}
@@ -53,6 +55,7 @@ import {
 import {getMainScreenData} from "~/composables/mainScreenData";
 
 const imageListe = ref<{filename: string, url: string}[]>()
+const currentVisibleIndex = ref(0)
 
 const currentWeekMenuData: Ref<IMenuData__foodCourt__weekMenu | null> = ref(null)
 
@@ -125,7 +128,8 @@ onMounted(() => {
 
 function setAutoToggleBetweenImages() {
     window.setInterval(() => {
-        // ici
+        const total = (imageListe.value?.length ?? 0) + 1
+        currentVisibleIndex.value = (currentVisibleIndex.value + 1) % total
     }, 5_000)
 }
 
